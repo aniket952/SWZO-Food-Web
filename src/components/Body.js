@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { SWIGGY_URL } from "../utils/Constants";
 import ShimmerUI from "./Shimmer"
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -16,6 +17,7 @@ const Body = () => {
     
     setRestaurantList(json.data.cards[1].card.card.gridElements.infoWithStyle?.restaurants)
     setRestaurantListData(json.data.cards[1].card.card.gridElements.infoWithStyle?.restaurants)
+    console.log(restaurantList)
   }
   
   return (restaurantList.length==0)? <ShimmerUI /> :(
@@ -39,7 +41,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {restaurantList.map((ele, index) => {
-          return <RestaurantCard key={index} data={ele} />;
+          return <Link to={"/restaurant/"+ele.info.id} key={index}><RestaurantCard  data={ele} /></Link>;
         })}
       </div>
     </div>
