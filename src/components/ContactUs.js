@@ -1,6 +1,6 @@
 const Contact = ()=>{
     return (
-        <div>Contact page</div>
+        <div className="flex">Contact page</div>
     )
 }
 export default Contact;
