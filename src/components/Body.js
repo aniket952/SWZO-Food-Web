@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withRatedLabel } from "./RestaurantCard";
 import { SWIGGY_URL } from "../utils/Constants";
 import ShimmerUI from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -11,9 +11,12 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [restaurantListData, setRestaurantListData] = useState([]);
 
+  const MostRated = withRatedLabel(RestaurantCard);
+
   const onlineStatus = useOnlineStatus();
   useEffect(() => {
     fetchRestaurantList();
+    console.log(restaurantList);
   }, []);
   const fetchRestaurantList = async () => {
     const reslist = await fetch(SWIGGY_URL, {
@@ -29,7 +32,6 @@ const Body = () => {
     setRestaurantListData(
       json.data.cards[1].card.card.gridElements.infoWithStyle?.restaurants
     );
-    console.log(restaurantList);
   };
   if (onlineStatus === false) {
     return <h1>Looks like you are offline, check your internet please</h1>;
@@ -74,7 +76,11 @@ const Body = () => {
         {restaurantList.map((ele, index) => {
           return (
             <Link to={"/restaurant/" + ele.info.id} key={index}>
-              <RestaurantCard data={ele} />
+              {ele.info.avgRating >= 4.6 ? (
+                <MostRated data={ele} />
+              ) : (
+                <RestaurantCard data={ele} />
+              )}
             </Link>
           );
         })}
