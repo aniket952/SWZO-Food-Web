@@ -1,15 +1,17 @@
 import { useState } from "react";
 import ItemCards from "./ItemList";
 
-const RestaurantCategory = ({ data }) => {
+const RestaurantCategory = ({ data, isVisible, onMenuClick }) => {
   console.log("props ", data);
-  const [isVisible, setIsVisible] = useState(false);
+  const handleOnClick = ()=>{
+    onMenuClick()
+  }
+  // const [isVisible, setIsVisible] = useState(false);
   return (
     <div>
       <div
         onClick={() => {
-          isVisible === true ? setIsVisible(false) : setIsVisible(true);
-          console.log(isVisible);
+          handleOnClick()
         }}
         className="w-6/12 mx-auto my-4 bg-gray-300 shadow-lg flex justify-between p-4 rounded-lg hover:cursor-pointer"
       >
