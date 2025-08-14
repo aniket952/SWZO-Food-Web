@@ -16,7 +16,6 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   useEffect(() => {
     fetchRestaurantList();
-    console.log(restaurantList);
   }, []);
   const fetchRestaurantList = async () => {
     const reslist = await fetch(SWIGGY_URL, {

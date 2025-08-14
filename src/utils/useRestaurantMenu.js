@@ -19,10 +19,6 @@ const useRestaurantMenu = (resId) => {
       }
     );
     const json = await data.json();
-    console.log(
-      "recommended ",
-      json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR
-    );
     const temp = json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards || [];
     setResInfo(temp);
   };

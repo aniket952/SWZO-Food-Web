@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const [currentState, setCurrentState] = useState("login");
   const cartItems = useSelector((store) => store.cart.items);
-  console.log("cartItems - ", cartItems);
   return (
     <div className="flex justify-between bg-pink-200 shadow-lg">
       <div className="logo-container">

@@ -6,7 +6,6 @@ const RestaurantCategory = ({ data, isVisible, onMenuClick }) => {
     onMenuClick();
   };
   // const [isVisible, setIsVisible] = useState(false);
-  console.log("prev data - ", data.itemCards)
   return (
     <div>
       <div
