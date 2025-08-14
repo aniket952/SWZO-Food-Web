@@ -2,16 +2,16 @@ import { useState } from "react";
 import ItemCards from "./ItemList";
 
 const RestaurantCategory = ({ data, isVisible, onMenuClick }) => {
-  console.log("props ", data);
-  const handleOnClick = ()=>{
-    onMenuClick()
-  }
+  const handleOnClick = () => {
+    onMenuClick();
+  };
   // const [isVisible, setIsVisible] = useState(false);
+  console.log("prev data - ", data.itemCards)
   return (
     <div>
       <div
         onClick={() => {
-          handleOnClick()
+          handleOnClick();
         }}
         className="w-6/12 mx-auto my-4 bg-gray-300 shadow-lg flex justify-between p-4 rounded-lg hover:cursor-pointer"
       >
